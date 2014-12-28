@@ -15,6 +15,7 @@ meteor add iron-router
 ```
 
 Install Polymer components with [bower](http://bower.io/)
+
 Check the config files bower.json and .bowerrc
 ```
 bower install
