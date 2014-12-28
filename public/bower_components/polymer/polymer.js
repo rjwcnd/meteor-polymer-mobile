@@ -7,7 +7,7 @@
  * Code distributed by Google as part of the polymer project is also
  * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
-// @version 0.5.0
+// @version 0.5.1
 window.PolymerGestures = {};
 
 (function(scope) {
@@ -939,7 +939,7 @@ window.PolymerGestures = {};
   };
 })(window.PolymerGestures);
 
-(function (scope) {
+(function(scope) {
   var dispatcher = scope.dispatcher;
   var pointermap = dispatcher.pointermap;
   // radius around touchend that swallows mouse events
@@ -948,10 +948,22 @@ window.PolymerGestures = {};
   var WHICH_TO_BUTTONS = [0, 1, 4, 2];
 
   var CURRENT_BUTTONS = 0;
-  var HAS_BUTTONS = false;
-  try {
-    HAS_BUTTONS = new MouseEvent('test', {buttons: 1}).buttons === 1;
-  } catch (e) {}
+
+  var FIREFOX_LINUX = /Linux.*Firefox\//i;
+
+  var HAS_BUTTONS = (function() {
+    // firefox on linux returns spec-incorrect values for mouseup.buttons
+    // https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent.buttons#See_also
+    // https://codereview.chromium.org/727593003/#msg16
+    if (FIREFOX_LINUX.test(navigator.userAgent)) {
+      return false;
+    }
+    try {
+      return new MouseEvent('test', {buttons: 1}).buttons === 1;
+    } catch (e) {
+      return false;
+    }
+  })();
 
   // handler block for native mouse events
   var mouseEvents = {
@@ -1273,7 +1285,7 @@ window.PolymerGestures = {};
         d.forEach(function(p) {
           this.cancel(p);
           pointermap.delete(p.pointerId);
-        });
+        }, this);
       }
     },
     touchstart: function(inEvent) {
@@ -1370,9 +1382,15 @@ window.PolymerGestures = {};
     };
     // if click coordinates are close to touch coordinates, assume the click came from a touch
     var wasTouched = scope.mouseEvents.lastTouches.some(closeTo);
-    // if the click came from touch, and the click target is not the same as the touchstart target, then the touchstart
-    // target was probably removed, and the click should be "busted"
-    if (wasTouched && (ev.target !== touchEvents.firstTarget)) {
+    // if the click came from touch, and the touchstart target is not in the path of the click event,
+    // then the touchstart target was probably removed, and the click should be "busted"
+    var path = scope.targetFinding.path(ev);
+    if (wasTouched) {
+      for (var i = 0; i < path.length; i++) {
+        if (path[i] === touchEvents.firstTarget) {
+          return;
+        }
+      }
       ev.preventDefault();
       STOP_PROP_FN.call(ev);
     }
@@ -2041,7 +2059,9 @@ window.PolymerGestures = {};
       'cancel'
     ],
     exposes: [
+      'pinchstart',
       'pinch',
+      'pinchend',
       'rotate'
     ],
     defaultActions: {
@@ -2059,11 +2079,19 @@ window.PolymerGestures = {};
           diameter: points.diameter,
           target: scope.targetFinding.LCA(points.a.target, points.b.target)
         };
+
+        this.firePinch('pinchstart', points.diameter, points);
       }
     },
     up: function(inEvent) {
       var p = pointermap.get(inEvent.pointerId);
+      var num = pointermap.pointers();
       if (p) {
+        if (num === 2) {
+          // fire 'pinchend' before deleting pointer
+          var points = this.calcChord();
+          this.firePinch('pinchend', points.diameter, points);
+        }
         pointermap.delete(inEvent.pointerId);
       }
     },
@@ -2078,9 +2106,9 @@ window.PolymerGestures = {};
     cancel: function(inEvent) {
         this.up(inEvent);
     },
-    firePinch: function(diameter, points) {
+    firePinch: function(type, diameter, points) {
       var zoom = diameter / this.reference.diameter;
-      var e = eventFactory.makeGestureEvent('pinch', {
+      var e = eventFactory.makeGestureEvent(type, {
         bubbles: true,
         cancelable: true,
         scale: zoom,
@@ -2107,7 +2135,7 @@ window.PolymerGestures = {};
       var diameter = points.diameter;
       var angle = this.calcAngle(points);
       if (diameter != this.reference.diameter) {
-        this.firePinch(diameter, points);
+        this.firePinch('pinch', diameter, points);
       }
       if (angle != this.reference.angle) {
         this.fireRotate(angle, points);
@@ -3252,7 +3280,7 @@ window.PolymerGestures = {};
     },
 
     setValue: function(model, newValue) {
-      if (this.path.length == 1);
+      if (this.path.length == 1)
         model = findScope(model, this.path[0]);
 
       return this.path.setValueFrom(model, newValue);
@@ -3785,7 +3813,7 @@ window.PolymerGestures = {};
 })(this);
 
 Polymer = {
-  version: '0.5.0'
+  version: '0.5.1'
 };
 
 // TODO(sorvell): this ensures Polymer is an object and not a function
@@ -8126,7 +8154,7 @@ head.insertBefore(style, head.firstChild);
 /**
  * Force any pending data changes to be observed before 
  * the next task. Data changes are processed asynchronously but are guaranteed
- * to be processed, for example, before paintin. This method should rarely be 
+ * to be processed, for example, before painting. This method should rarely be 
  * needed. It does nothing when Object.observe is available; 
  * when Object.observe is not available, Polymer automatically flushes data 
  * changes approximately every 1/10 second. 
@@ -8155,7 +8183,21 @@ if (!Observer.hasObjectObserve) {
   var FLUSH_POLL_INTERVAL = 125;
   window.addEventListener('WebComponentsReady', function() {
     flush();
-    scope.flushPoll = setInterval(flush, FLUSH_POLL_INTERVAL);
+    // watch document visiblity to toggle dirty-checking
+    var visibilityHandler = function() {
+      // only flush if the page is visibile
+      if (document.visibilityState === 'hidden') {
+        if (scope.flushPoll) {
+          clearInterval(scope.flushPoll);
+        }
+      } else {
+        scope.flushPoll = setInterval(flush, FLUSH_POLL_INTERVAL);
+      }
+    };
+    if (typeof document.visibilityState === 'string') {
+      document.addEventListener('visibilitychange', visibilityHandler);
+    }
+    visibilityHandler();
   });
 } else {
   // make flush a no-op when we have Object.observe
