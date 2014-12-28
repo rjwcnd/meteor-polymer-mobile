@@ -1,0 +1,17 @@
+<template name="notifications">
+  {{#if isNotifications}}
+    <paper-icon-button id="notificationsbutton" icon="social:notifications" alarm></paper-icon-button>
+  {{else}}
+    <paper-icon-button id="notificationsbutton" icon="social:notifications-none"></paper-icon-button>
+  {{/if}}
+  <paper-dropdown id="notificationsmenu" class="dropdown" halign="right" transition="">
+    <core-menu name="menunot">
+      <div>
+        <span flex>Notifications</span>
+      </div>
+      {{#each notifications}}
+      <paper-item data-del id="not-{{_id}}">{{name}}</paper-item>
+      {{/each}}
+    </core-menu>
+  </paper-dropdown>
+</template>

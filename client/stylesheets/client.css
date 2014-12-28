@@ -1,0 +1,46 @@
+body {
+  font-family: sans-serif;
+}
+core-header-panel {
+  background: white;
+}
+core-toolbar {
+  background-color: #56BA89;
+}
+#navheader {
+  background-color: #03A9F4;
+}
+.content {
+  padding: 20px;
+}
+/* drawer is always visible on a wide screen
+so menu button isn't required */
+core-drawer-panel:not([narrow]) #navicon {
+  display: none;
+}
+
+/*core-drawer-panel:[narrow] #navicon2 {
+  display: none;
+}*/
+
+paper-dropdown {
+  top: 64px;
+}
+
+paper-fab {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}
+
+paper-icon-button[alarm] {
+  color: #B16138;
+}
+
+#toastred {
+  color: #B16138;
+}
+
+#toastgreen {
+  color: green;
+}
