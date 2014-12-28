@@ -7,7 +7,7 @@ A basic sample of Meteor with Polymer for web and mobiles
 Clone the repository [appshore/polymer-mobile](http://github.com/appshore/polymer-mobile)
 
 
-## Run on your computer
+## Running on your computer
 
 Start the Meteor server
 ```
@@ -20,13 +20,17 @@ http://localhost:3000
 ```
 
 ### Trigger a notification
+From shell
 ```
 meteor mongo
+```
+From Mongo shell
+``
 meteor:PRIMARY> db.notifications.insert({name: 'Not 1'});
 ```
-Check in the app
+Check the app
 
-## Run on meteor.com
+## Running on meteor.com
 
 Deploy the application on Meteor server
 ```
@@ -38,7 +42,7 @@ From your browser
 http://your-own-subdomain.meteor.com
 ```
 
-## To run on Android or IOS mobiles
+## Running on Android or IOS mobile
 
-Follow instructions from [Meteor Tutorial](https://www.meteor.com/try/7)
+Follow instructions from [Meteor Tutorial > Running on mobile](https://www.meteor.com/try/7)
 
