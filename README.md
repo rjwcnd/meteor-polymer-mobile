@@ -2,13 +2,13 @@
 A basic sample of Meteor with Polymer for web and mobiles
 
 ## Requirements
-The following Meteor packages are installed:
+Meteor packages installed by default: 
 - differential:vulcanize
 - ecwyne:polymer
 - ecwyne:polymer-elements
 - iron-router
-
-Polymer components are installed with bower
+Polymer components are installed with bower.
+In both cases if you clone the git you won't need to reinstall them.
 
 ## Installation
 Clone the repository [appshore/meteor-polymer-mobile](http://github.com/appshore/meteor-polymer-mobile)
