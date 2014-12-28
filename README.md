@@ -1,4 +1,4 @@
-# Polymer mobile
+# Meteor Polymer mobile
 A basic sample of Meteor with Polymer for web and mobiles
 
 ## Installation
