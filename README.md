@@ -1,7 +1,7 @@
 # Meteor Polymer mobile
 A basic sample of Meteor with Polymer for web and mobiles.
 
-Demo at (http://polymer-mobile.meteor.com/)
+Demo: http://polymer-mobile.meteor.com/
 
 ## Requirements
 Meteor packages installed by default: 
@@ -15,7 +15,7 @@ Polymer components are installed with bower.
 In both cases if you clone the git you won't need to reinstall them.
 
 ## Installation
-Clone the repository [appshore/meteor-polymer-mobile](http://github.com/appshore/meteor-polymer-mobile)
+Clone the repository http://github.com/appshore/meteor-polymer-mobile
 
 ## Running on your computer
 Start the Meteor server
