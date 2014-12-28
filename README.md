@@ -1,23 +1,27 @@
 # Meteor Polymer mobile
-A basic example of Meteor with Polymer for web and mobiles.
+A basic example of Meteor with Polymer for web and mobiles
 
 Demo: http://polymer-mobile.meteor.com/
 
-## Requirements
-Meteor packages installed by default: 
-- differential:vulcanize
-- iron-router
-
-Polymer components are installed with [bower](http://bower.io/) . Check the config files bower.json and .bowerrc
-```
-bower install
-bower update
-```
-
-In both cases if you clone the git you won't need to reinstall them.
-
 ## Installation
 Clone the repository http://github.com/appshore/meteor-polymer-mobile
+The following task aren´t required if the repository is fully cloned
+
+Add Meteor packages:
+```
+meteor add differential:vulcanize
+meteor add iron-router
+```
+
+Install Polymer components with [bower](http://bower.io/)
+Check the config files bower.json and .bowerrc
+```
+bower install
+```
+or
+```
+bower update
+```
 
 ## Running on your computer
 Start the Meteor server
