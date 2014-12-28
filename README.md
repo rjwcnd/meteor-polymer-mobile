@@ -8,7 +8,7 @@ Clone the repository http://github.com/appshore/meteor-polymer-mobile
 
 The following task aren´t required if the repository is fully cloned
 
-Add Meteor packages:
+Add Meteor packages
 ```
 meteor add differential:vulcanize
 meteor add iron-router
