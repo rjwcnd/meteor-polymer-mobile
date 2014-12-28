@@ -11,7 +11,7 @@ The following Meteor packages are installed:
 Polymer components are installed with bower
 
 ## Installation
-Clone the repository [appshore/polymer-mobile](http://github.com/appshore/polymer-mobile)
+Clone the repository [appshore/meteor-polymer-mobile](http://github.com/appshore/meteor-polymer-mobile)
 
 ## Running on your computer
 Start the Meteor server
