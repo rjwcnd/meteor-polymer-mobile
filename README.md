@@ -5,8 +5,9 @@ A basic sample of Meteor with Polymer for web and mobiles
 
 ## Installation
 
-Clone the repository `https://github.com/appshore/polymer-mobile`
-From the root directory of the meteor app, run `bower install` to install Polymer, web components, & vulcanize
+Clone the repository [appshore/polymer-mobile](http://github.com/appshore/polymer-mobile)
+
+From the root directory of the meteor app, run `bower install` to install Polymer, web components and vulcanize
 
 
 ## Run on your computer
