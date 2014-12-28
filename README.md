@@ -20,13 +20,16 @@ http://localhost:3000
 ```
 
 ### Trigger a notification
-From shell
+From shell, run mongo shell
 ```
 meteor mongo
 ```
 From Mongo shell
 ```
-meteor:PRIMARY> db.notifications.insert({name: 'Not 1'});
+use meteor;
+show collections;
+db.notifications.insert({name: 'Not 1'});
+db.notifications.find();
 ```
 Check the app
 
