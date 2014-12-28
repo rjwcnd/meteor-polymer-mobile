@@ -10,6 +10,3 @@ insecure
 autopublish
 ecwyne:polymer
 ecwyne:polymer-elements
-accounts-base
-accounts-google
-accounts-password
