@@ -25,7 +25,7 @@ From shell
 meteor mongo
 ```
 From Mongo shell
-``
+```
 meteor:PRIMARY> db.notifications.insert({name: 'Not 1'});
 ```
 Check the app
