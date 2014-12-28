@@ -1,10 +1,9 @@
 
 <template name="module2">
-  <div horizontal layout>
+  <div>
     <p>Add data from Mongo shell into collection module2</p>
     {{#each module2}}
-    <paper-item data-del>{{name}}</paper-item>
+      <div>{{name}}</div>
     {{/each}}
   </div>
-  <paper-fab mini icon="create"></paper-fab>
 </template>
