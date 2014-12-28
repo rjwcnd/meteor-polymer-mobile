@@ -1,5 +1,7 @@
 # Meteor Polymer mobile
-A basic sample of Meteor with Polymer for web and mobiles
+A basic sample of Meteor with Polymer for web and mobiles.
+
+Demo at (http://polymer-mobile.meteor.com/)
 
 ## Requirements
 Meteor packages installed by default: 
