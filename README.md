@@ -37,7 +37,7 @@ From your browser
 http://your-own-subdomain.meteor.com
 ```
 
-## Running on Android or IOS mobile
+## Running on Android or IOS mobile with Cordova
 Follow instructions from [Meteor Tutorial > Running on mobile](https://www.meteor.com/try/7)
 
 ## Trigger a notification from Mongo shell
