@@ -8,6 +8,7 @@ Meteor packages installed by default:
 - ecwyne:polymer-elements
 - iron-router
 Polymer components are installed with bower.
+
 In both cases if you clone the git you won't need to reinstall them.
 
 ## Installation
