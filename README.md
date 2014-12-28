@@ -1,5 +1,5 @@
 # Meteor Polymer mobile
-A basic sample of Meteor with Polymer for web and mobiles.
+A basic example of Meteor with Polymer for web and mobiles.
 
 Demo: http://polymer-mobile.meteor.com/
 
