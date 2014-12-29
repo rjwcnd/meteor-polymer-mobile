@@ -6,7 +6,7 @@ Demo: http://polymer-mobile.meteor.com/
 ## Installation
 Clone the repository http://github.com/appshore/meteor-polymer-mobile
 
-The following task aren´t required if the repository is fully cloned
+The following tasks aren´t required if the repository is fully cloned
 
 Add Meteor packages
 ```
