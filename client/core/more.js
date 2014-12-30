@@ -14,10 +14,10 @@ Template.more.events({
   },
   'click [id="setofflinebtn"]': function() {
     Meteor.disconnect();
-    IN.toast.red('You are now disconnect from Meteor Server');
+    IN.toast.view('red','You are now disconnect from Meteor Server');
   },  
   'click [id="setonlinebtn"]': function() {
     Meteor.reconnect();
-    IN.toast.green('You are now connected to Meteor Server');
+    IN.toast.view('green','You are now connected to Meteor Server');
   }
 });

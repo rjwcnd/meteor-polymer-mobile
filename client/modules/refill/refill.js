@@ -40,3 +40,10 @@ Template.refillpopup.rendered = function(argument) {
   document.getElementById('refillpopup').toggle();
 }
 
+Template.refillpopup.events({ 
+  'core-overlay-close-completed':function(e) {
+    console.log('Close '+e.currentTarget.id);
+    e.currentTarget.remove();
+  }
+});
+

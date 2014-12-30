@@ -1,17 +1,17 @@
 <template name="notifications">
-  {{#if isNotifications}}
-    <paper-icon-button id="notificationsbutton" icon="social:notifications" alarm></paper-icon-button>
+  {{#if countNotifications}}
+    <paper-icon-button id="notificationsbtn" icon="social:notifications" alarm></paper-icon-button>
   {{else}}
-    <paper-icon-button id="notificationsbutton" icon="social:notifications-none"></paper-icon-button>
+    <paper-icon-button id="notificationsbtn" icon="social:notifications-none"></paper-icon-button>
   {{/if}}
-  <paper-dropdown id="notificationsmenu" class="dropdown" halign="right" transition="">
-    <core-menu name="menunot">
-      <div>
-        <span>Add notifications from Mongo shell</span>
-      </div>
+  
+  <paper-dialog id="notificationsmenu" class="dialog-notifications" layered="false">
+    <span>{{countNotifications}} notifications<br/> add more from Mongo shell</span>
+    <core-menu id="menunot">
       {{#each notifications}}
-      <paper-item data-del id="not-{{_id}}">{{name}}</paper-item>
+        <paper-item data-del id="not-{{_id}}">{{name}}</paper-item>
       {{/each}}
     </core-menu>
-  </paper-dropdown>
+  </paper-dialog>
+    
 </template>

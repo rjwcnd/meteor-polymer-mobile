@@ -1,5 +1,6 @@
 <template name="content">
-  <core-header-panel main>
+  <core-header-panel main >
+  
     <core-toolbar id="contentheader">
       <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
       <span id="contenttitle" flex></span>
@@ -8,9 +9,8 @@
         {{> more }}
       </paper-menu-button>
     </core-toolbar>
-    <div id="content" class="content">
-      {{> yield}}
-    </div>
+
+    {{> yield}}
   </core-header-panel>
 </template>
 

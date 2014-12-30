@@ -1,13 +1,20 @@
 
 Initial.prototype.toast = {
-  green: function( text) {
-    Blaze.render(Template.toastgreen, document.body);
-    document.getElementById('toastgreen').setAttribute('text', text);
-    document.getElementById('toastgreen').show();
-  },
-  red: function( text) {
-    Blaze.render(Template.toastred, document.body);
-    document.getElementById('toastred').setAttribute('text', text);
-    document.getElementById('toastred').show();
+  view: function( color, text) {
+    // to avoid creation of multiple toasts
+    if( document.getElementById('toast') )
+      document.getElementById('toast').remove();
+    Blaze.renderWithData(Template.toast, {color:color,text:text}, document.body);
   }
 }
+
+Template.toast.rendered = function() {
+  document.getElementById('toast').show();
+}
+
+Template.toast.events({ 
+  'core-overlay-close-completed':function(e) {
+    // the object is deleted once closed
+    e.currentTarget.remove();
+  }
+});

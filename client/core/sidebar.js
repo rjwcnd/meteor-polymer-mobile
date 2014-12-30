@@ -1,18 +1,18 @@
 
-Template.sidebar.rendered = function(argument) {
-  document.getElementById('navicon2').addEventListener('click', function() {
-    if( document.getElementById('drawerPanel').getAttribute('forceNarrow') == 'false') {
-      document.getElementById('drawerPanel').setAttribute('forceNarrow','true');
-      document.getElementById('navicon2').setAttribute('icon','drawer');
+Template.sidebar.events({
+  'click [id="navicon2"]': function() {
+    var isNarrow = document.getElementById('drawerPanel').getAttribute('forceNarrow');
+    var icon = 'drawer';
+    if( isNarrow == 'false') {
+      isNarrow = 'true';
     }
     else {
-      document.getElementById('drawerPanel').setAttribute('forceNarrow','false');
-      document.getElementById('navicon2').setAttribute('icon','check-box-outline-blank');
+      isNarrow = 'false';
+      icon = 'check-box-outline-blank';
     }
-  });
-}
-
-Template.sidebar.events({
+    document.getElementById('drawerPanel').setAttribute('forceNarrow',isNarrow);
+    document.getElementById('navicon2').setAttribute('icon',icon);
+  },  
   'click [label="Module1"]': function() {
     IN.layout.toggleDrawerPanel();
     Router.go('/module1');

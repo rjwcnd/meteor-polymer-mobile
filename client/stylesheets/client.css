@@ -10,6 +10,7 @@ core-toolbar {
 #navheader {
   background-color: #03A9F4;
 }
+
 .content {
   padding: 20px;
 }
@@ -19,10 +20,14 @@ core-drawer-panel:not([narrow]) #navicon {
   display: none;
 }
 
-/*core-drawer-panel:[narrow] #navicon2 {
-  display: none;
-}*/
-
+html /deep/ .dialog-notifications {
+  position: fixed;
+  margin-top:64px;
+  margin-right:2px;
+  top: 0px;
+  right: 0px;
+}
+    
 paper-dropdown {
   top: 64px;
 }
@@ -37,10 +42,10 @@ paper-icon-button[alarm] {
   color: #B16138;
 }
 
-#toastred {
+.toastred {
   color: #B16138;
 }
 
-#toastgreen {
+.toastgreen {
   color: green;
 }
