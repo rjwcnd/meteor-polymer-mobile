@@ -1,5 +1,5 @@
 # Meteor Polymer mobile
-A basic example of Meteor with Polymer for web and mobiles
+Test of Meteor with Polymer to build a cross-plaform application for web and mobile
 
 Demo: http://polymer-mobile.meteor.com/
 
