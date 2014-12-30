@@ -4,7 +4,7 @@ Template.about.rendered = function() {
 
 Template.about.events({ 
   'core-overlay-close-completed':function(e) {
-    console.log('Close '+e.currentTarget.id);
+    // the object is deleted once closed
     e.currentTarget.remove();
   }
 });

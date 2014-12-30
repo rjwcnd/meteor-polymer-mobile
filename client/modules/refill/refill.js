@@ -5,7 +5,7 @@ Template.refill.helpers({
   }
 });
 
-Template.refill.rendered = function(argument) {
+Template.refill.rendered = function() {
   IN.layout.setMainTitle('Refill');
 }
 
@@ -31,18 +31,18 @@ Template.refill.events({
 });
 
 Template.refillpopup.helpers({
-  refill: function(argument) {
+  refill: function() {
     return Refill.find();
   }
 });
 
-Template.refillpopup.rendered = function(argument) {
+Template.refillpopup.rendered = function() {
   document.getElementById('refillpopup').toggle();
 }
 
 Template.refillpopup.events({ 
   'core-overlay-close-completed':function(e) {
-    console.log('Close '+e.currentTarget.id);
+    // the object is deleted once closed
     e.currentTarget.remove();
   }
 });
