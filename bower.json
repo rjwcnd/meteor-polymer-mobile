@@ -2,6 +2,10 @@
   "name": "meteor-polymer-mobile",
   "version": "0.0.0",
   "license": "MIT",
+  "homepage": "https://github.com/appshore/meteor-polymer-mobile",
+  "authors": [],
+  "license": "none",
+  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",

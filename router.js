@@ -2,7 +2,7 @@ Router.configure({
   layoutTemplate: 'main'
 });
 
-Router.route('/', function () {
+Router.route('/', function(){
   this.redirect('/refill');
 });
 
