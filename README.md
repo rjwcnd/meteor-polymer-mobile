@@ -6,8 +6,6 @@ Demo: http://polymer-mobile.meteor.com/
 ## Installation
 Clone the repository http://github.com/appshore/meteor-polymer-mobile
 
-The following tasks aren´t required if the repository is fully cloned
-
 Add Meteor package(s)
 ```
 meteor add iron-router
@@ -18,10 +16,6 @@ Install Polymer components with [bower](http://bower.io/)
 Check the config files bower.json and .bowerrc
 ```
 bower install
-```
-or
-```
-bower update
 ```
 
 ## Running on your computer
