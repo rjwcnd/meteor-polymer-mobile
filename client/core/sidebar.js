@@ -2,13 +2,13 @@
 Template.sidebar.events({
   'click [id="navicon2"]': function() {
     var isNarrow = document.getElementById('drawerPanel').getAttribute('forceNarrow');
-    var icon = 'drawer';
+    var icon = 'arrow-forward';
     if( isNarrow == 'false') {
       isNarrow = 'true';
     }
     else {
       isNarrow = 'false';
-      icon = 'check-box-outline-blank';
+      icon = 'arrow-back';
     }
     document.getElementById('drawerPanel').setAttribute('forceNarrow',isNarrow);
     document.getElementById('navicon2').setAttribute('icon',icon);
